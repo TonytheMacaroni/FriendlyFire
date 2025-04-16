@@ -39,6 +39,7 @@ import me.tonythemacaroni.friendlyfire.hook.HookCapability;
 import me.tonythemacaroni.friendlyfire.event.HookLoadingEvent;
 import me.tonythemacaroni.friendlyfire.hook.external.mythicmobs.*;
 import me.tonythemacaroni.friendlyfire.hook.external.worldguard.*;
+import me.tonythemacaroni.friendlyfire.hook.external.parties.PartiesHook;
 import me.tonythemacaroni.friendlyfire.hook.external.mcmmo.McMMOPartyHook;
 import me.tonythemacaroni.friendlyfire.hook.external.towny.GenericTownyHook;
 import me.tonythemacaroni.friendlyfire.hook.external.battlearena.BattleArenaHook;
@@ -100,6 +101,9 @@ public final class HookManager {
             registerHook(MythicHealMechanicEventHook.class);
             registerHook(MythicMobsOwnerHook.class);
             registerHook(MythicMobsParentHook.class);
+
+            // Parties
+            registerHook(PartiesHook.class);
 
             // Towny
             registerHook(GenericTownyHook.class);

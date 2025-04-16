@@ -11,6 +11,7 @@ repositories {
 
     maven { url = "https://jitpack.io" }
     maven { url = "https://maven.enginehub.org/repo/" }
+    maven { url = "https://repo.alessiodp.com/releases/" }
     maven { url = "https://repo.battleplugins.org/snapshots/" }
     maven { url = "https://mvn.lumine.io/repository/maven-public/" }
     maven { url = "https://repo.glaremasters.me/repository/towny/" }
@@ -32,6 +33,7 @@ dependencies {
     compileOnly("com.palmergames.bukkit.towny:towny:0.100.4.0") { transitive = false }
     compileOnly("com.sk89q.worldguard:worldguard-bukkit:7.0.13-SNAPSHOT")
     compileOnly("com.github.TheComputerGeek2.MagicSpells:core:main-SNAPSHOT") { transitive = false }
+    compileOnly("com.alessiodp.parties:parties-api:3.2.16") { transitive = false }
 }
 
 tasks {
