@@ -1,0 +1,5 @@
+name: FriendlyFire
+version: '0.1.0'
+main: me.tonythemacaroni.friendlyfire.FriendlyFire
+api-version: '1.21.4'
+loadbefore: ["MagicSpells", "WorldGuard"]

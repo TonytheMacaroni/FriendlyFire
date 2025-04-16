@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '8.3.5'
+}
+
+group = 'me.tonythemacaroni'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+
+    maven { url = "https://jitpack.io" }
+    maven { url = "https://maven.enginehub.org/repo/" }
+    maven { url = "https://repo.battleplugins.org/snapshots/" }
+    maven { url = "https://mvn.lumine.io/repository/maven-public/" }
+    maven { url = "https://repo.glaremasters.me/repository/towny/" }
+    maven { url = "https://repo.papermc.io/repository/maven-public/" }
+    maven { url = "https://nexus.neetgames.com/repository/maven-releases/" }
+}
+
+dependencies {
+    implementation(project(":nms"))
+    implementation("org.incendo:cloud-paper:2.0.0-beta.10")
+
+    compileOnly("org.jetbrains:annotations:24.1.0")
+    compileOnly("org.spongepowered:configurate-yaml:4.2.0-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+
+    compileOnly("io.lumine:Mythic-Dist:5.7.1") { transitive = false }
+    compileOnly("com.gmail.nossr50.mcMMO:mcMMO:2.2.022") { transitive = false }
+    compileOnly("org.battleplugins:arena:4.0.0-SNAPSHOT") { transitive = false }
+    compileOnly("com.palmergames.bukkit.towny:towny:0.100.4.0") { transitive = false }
+    compileOnly("com.sk89q.worldguard:worldguard-bukkit:7.0.13-SNAPSHOT")
+    compileOnly("com.github.TheComputerGeek2.MagicSpells:core:main-SNAPSHOT") { transitive = false }
+}
+
+tasks {
+    assemble {
+        dependsOn(shadowJar)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Jar).configureEach {
+    manifest {
+        attributes["paperweight-mappings-namespace"] = "mojang"
+    }
+
+    archiveBaseName = "FriendlyFire"
+}
+
+shadowJar {
+    setArchiveClassifier("")
+}
