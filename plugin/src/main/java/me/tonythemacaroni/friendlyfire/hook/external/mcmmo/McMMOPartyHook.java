@@ -2,6 +2,8 @@ package me.tonythemacaroni.friendlyfire.hook.external.mcmmo;
 
 import org.jetbrains.annotations.NotNull;
 
+import org.spongepowered.configurate.objectmapping.ConfigSerializable;
+
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -46,6 +48,7 @@ public class McMMOPartyHook extends Hook<McMMOPartyHook.Config> implements Relat
         return new Relationship(Relation.ALLIED, config.priorityLevel);
     }
 
+    @ConfigSerializable
     public static class Config extends Hook.Config {
 
         public OrderedPriority priorityLevel = new OrderedPriority(Priority.HIGH);

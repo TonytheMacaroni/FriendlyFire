@@ -50,6 +50,7 @@ public class WaterBottleSplashEventHook extends Hook<EventPriorityConfig> implem
                     event.getToRehydrate().remove(entity);
                 })
                 .build(),
+            // TODO: Add options to separate out
             EventListener.<WaterBottleSplashEvent, ThrownPotion, LivingEntity, WaterBottleSplashEventHook>
                     of(WaterBottleSplashEvent.class, this)
                 .priority(config.eventPriority)

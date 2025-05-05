@@ -2,6 +2,8 @@ package me.tonythemacaroni.friendlyfire.hook.external.towny;
 
 import org.jetbrains.annotations.NotNull;
 
+import org.spongepowered.configurate.objectmapping.ConfigSerializable;
+
 import org.bukkit.entity.Entity;
 import org.bukkit.event.entity.EntityDamageEvent;
 
@@ -39,6 +41,7 @@ public class GenericTownyHook extends Hook<GenericTownyHook.Config> implements R
         return new Relationship(Relation.FRIENDLY, config.priorityLevel);
     }
 
+    @ConfigSerializable
     public static class Config extends Hook.Config {
 
         public OrderedPriority priorityLevel = new OrderedPriority(Priority.HIGH);

@@ -73,7 +73,7 @@ public class WorldGuardPvPHook extends Hook<WorldGuardPvPHook.Config> implements
 
         Relation relation;
         if (relationActor == null && relationTarget == null) return Relationship.UNKNOWN;
-        else if (relationActor != null && relationTarget != null) relation = relationActor.combine(relationTarget);
+        else if (relationActor != null && relationTarget != null) relation = Relation.combine(relationActor, relationTarget);
         else relation = relationActor == null ? relationTarget : relationActor;
 
         return new Relationship(relation, config.priorityLevel.of(relation));

@@ -116,7 +116,7 @@ public class PrePlayerAttackEntityEventHook extends Hook<PrePlayerAttackEntityEv
                     .thenComparingDouble(e -> e.entity.getLocation().distanceSquared(start))
             )
             .map(EntityWithDistance::entity)
-            .filter(entity -> FriendlyFire.queryRelation(entity, player).canApply(Relation.HOSTILE))
+            .filter(entity -> Relation.canApply(FriendlyFire.queryRelation(entity, player), Relation.HOSTILE))
             .findFirst();
     }
 

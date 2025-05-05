@@ -6,27 +6,30 @@ import org.jetbrains.annotations.NotNull;
 public enum Relation {
 
     ALLIED,
-    HOSTILE,
     FRIENDLY,
+    HOSTILE,
     UNFRIENDLY,
     NEUTRAL;
 
     // TODO: Check if this works properly?
-    public boolean canApply(@NotNull Relation action) {
+    public static boolean canApply(@NotNull Relation relationship, @NotNull Relation action) {
+        Preconditions.checkArgument(relationship != null, "Relationship relation must not be null.");
         Preconditions.checkArgument(action != null, "Action relation must not be null.");
 
-        if (this == ALLIED && action == FRIENDLY) return true;
-        if (this == HOSTILE && action == UNFRIENDLY) return true;
+        if (action == ALLIED) return relationship == ALLIED;
+        if (relationship == NEUTRAL || action == NEUTRAL) return true;
+        if (relationship == ALLIED && action == FRIENDLY) return true;
+        if (relationship == HOSTILE && action == UNFRIENDLY) return true;
 
-        return this == action || this == NEUTRAL || action == NEUTRAL;
+        return relationship == action;
     }
 
-    // TODO: Check if this works properly?
-    @NotNull
-    public Relation combine(@NotNull Relation other) {
-        Preconditions.checkArgument(other != null, "Other relation must not be null.");
+    // TODO: This needs a better name
+    public static Relation combine(@NotNull Relation relation1, @NotNull Relation relation2) {
+        Preconditions.checkArgument(relation1 != null, "Relation 1 must not be null.");
+        Preconditions.checkArgument(relation2 != null, "Relation 2 must not be null.");
 
-        return this.ordinal() <= other.ordinal() ? this : other;
+        return relation1.ordinal() <= relation2.ordinal() ? relation1 : relation2;
     }
 
 }

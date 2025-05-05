@@ -27,7 +27,8 @@ import me.tonythemacaroni.friendlyfire.util.RelationQueryInfo;
 @HookInfo(
     name = "competitions",
     description = "Controls interactions during BattleArena competitions.",
-    namespace = "battlearena"
+    namespace = "battlearena",
+    depends = "BattleArena"
 )
 public class BattleArenaHook extends Hook<BattleArenaHook.Config> implements RelationHook {
 

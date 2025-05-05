@@ -2,6 +2,8 @@ package me.tonythemacaroni.friendlyfire.hook.external.parties;
 
 import org.jetbrains.annotations.NotNull;
 
+import org.spongepowered.configurate.objectmapping.ConfigSerializable;
+
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -38,6 +40,7 @@ public class PartiesHook extends Hook<PartiesHook.Config> implements RelationHoo
         return Relationship.UNKNOWN;
     }
 
+    @ConfigSerializable
     public static class Config extends Hook.Config {
 
         public OrderedPriority priorityLevel = new OrderedPriority(Priority.HIGH);

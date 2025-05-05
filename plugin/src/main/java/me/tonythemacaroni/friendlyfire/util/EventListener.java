@@ -57,8 +57,8 @@ public record EventListener<E extends Event, A extends Entity, T extends Entity,
         Set<Entity> actorRelated = null;
 
         for (Map.Entry<? extends T, Relation> entry : targets.entrySet()) {
-            Relation eventRelation = entry.getValue();
-            if (eventRelation == Relation.NEUTRAL) continue;
+            Relation actionRelation = entry.getValue();
+            if (actionRelation == Relation.NEUTRAL) continue;
 
             if (actorRelated == null)
                 actorRelated = FriendlyFire.queryRelated(actor);
@@ -68,7 +68,7 @@ public record EventListener<E extends Event, A extends Entity, T extends Entity,
             Set<Entity> targetRelated = FriendlyFire.queryRelated(target);
 
             Relation relation = FriendlyFire.queryRelation(actorRelated, targetRelated, info);
-            if (!relation.canApply(eventRelation)) canceller.accept(event, target);
+            if (!Relation.canApply(relation, actionRelation)) canceller.accept(event, target);
         }
     }
 

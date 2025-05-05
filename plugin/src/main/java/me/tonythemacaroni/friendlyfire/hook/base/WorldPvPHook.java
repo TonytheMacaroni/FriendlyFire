@@ -1,6 +1,5 @@
 package me.tonythemacaroni.friendlyfire.hook.base;
 
-import me.tonythemacaroni.friendlyfire.hook.config.RelationPriorityLevels;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,6 +19,7 @@ import me.tonythemacaroni.friendlyfire.hook.RelationHook;
 import me.tonythemacaroni.friendlyfire.util.Relationship;
 import me.tonythemacaroni.friendlyfire.util.OrderedPriority;
 import me.tonythemacaroni.friendlyfire.util.RelationQueryInfo;
+import me.tonythemacaroni.friendlyfire.hook.config.RelationPriorityLevels;
 
 @HookInfo(
     name = "world-pvp",
@@ -42,7 +42,7 @@ public class WorldPvPHook extends Hook<WorldPvPHook.Config> implements RelationH
 
         Relation relation;
         if (relationActor == null && relationTarget == null) return Relationship.UNKNOWN;
-        else if (relationActor != null && relationTarget != null) relation = relationActor.combine(relationTarget);
+        else if (relationActor != null && relationTarget != null) relation = Relation.combine(relationActor, relationTarget);
         else relation = relationActor == null ? relationTarget : relationActor;
 
         return new Relationship(relation, config.priorityLevel.of(relation));

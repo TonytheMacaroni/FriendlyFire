@@ -13,6 +13,7 @@ public record Relationship(@NotNull Relation relation, @NotNull OrderedPriority 
         Preconditions.checkArgument(priority != null, "Priority cannot be null.");
     }
 
+    // TODO: Make sure this works properly w.r.t. Relation comparision
     @Override
     public int compareTo(@NotNull Relationship o) {
         int compare = priority.compareTo(o.priority);
